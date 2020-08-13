@@ -14,13 +14,15 @@
         </li>
      
     </ul>
-    <form  class="ng-dirty ng-touched ng-valid">
+   
+    <form #formData="ngForm" (ngSubmit)="addPost(formData)" class="ng-dirty ng-touched ng-valid">
         <div class="tab-content">
             <div class="tab-pane fade active show">
+              <div id="home">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-6 p-3">
                         <h4>Title</h4>
-                        <input type="text" class="form-control" placeholder="name">
+                        <input type="text" class="form-control" name="title" placeholder="name" ngModel required>
                     </div>
                     <div class="col-lg-6 col-md-3 col-6 p-3">
                         <h4 class="float-right mr-5 p-0">Blog Image</h4><br><br>
@@ -30,11 +32,11 @@
 
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-6 p-3"  style="margin-top: -150px;">
+                    <div class="col-lg-3 col-md-3 col-6 p-3"  style="margin-top: -100px;">
                         <h4>Blog Category</h4>
                         <div class="form-group">
                         
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select required class="form-control" ngModel name="blogCategory" id="exampleFormControlSelect1">
                               <option>Select Category</option>
                                 
                               <option>Music</option>
@@ -52,13 +54,63 @@
                     </div>
              
                 </div>
-                <div class="row" style="margin-top: -110px;">
+                <div class="row" style="margin-top: -50px;">
                     <div class="col-lg-3 col-md-3 col-6 p-3">
                         <h4>Blog Image</h4>
-                        <input type="file" class="form-control">
+                        <input type="file" class="form-control" ngModel required>
                     </div>
                 </div>
+              </div>
+            </div>
+        </div>
+        <div id="profile">
+            <div class="container">
+                <h4>Description</h4>
+                <form method="post">
+                <textarea id="mytextarea" class="form-control" name="description" ngModel required></textarea>
+                </form>
+            </div>
+            <div class="container mt-2">
+                <button type="submit" [disabled]="!formData.valid" class="btn btn-info">Save Post</button>
             </div>
         </div>
     </form>
+
+    <hr>
+    <div class="d-lg-flex justify-content-between align-items-center pt-3 pb-2 my-3 border-bottom">
+        <h2>All Products</h2>
+    </div>
+    <div class="row w-100">
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>Sr. No.</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Blog-Image</th>
+                    
+                  <th>Delete</th>
+                  
+               
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+
+                  <td>my blog</td>
+                  <td>Music</td>
+                  <td><img src="assets/img/upload.jpg" class="img-fluid" style="border-radius: 50%; height: 50px; width: 50px;"></td>
+
+                  <td><a><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
+                  <!-- <td><a ><i class="fa fa-pencil-square-o text-warning" aria-hidden="true"></i></a></td> -->
+                
+                </tr>
+ 
+              </tbody>
+            </table>
+          </div>
+    </div>
+   
    </main>

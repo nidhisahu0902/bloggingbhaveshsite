@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-manage-product',
@@ -11,5 +12,8 @@ export class ManageProductComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  addPost(formData : NgForm) 
+  {
+      console.log(formData.value)
+  }
 }
