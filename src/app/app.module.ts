@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { EditorModule } from '@tinymce/tinymce-angular';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ import { ManageProductComponent } from './Admin/manage-product/manage-product.co
     BrowserAnimationsModule, // required animations module
     NgxUiLoaderModule,
     FormsModule,
+    EditorModule,
     ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [],
