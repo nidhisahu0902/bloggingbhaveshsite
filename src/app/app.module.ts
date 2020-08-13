@@ -16,13 +16,17 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { HeaderComponent } from './share/header/header.component';
 import { DashboardComponent } from './Admin/dashboard/dashboard.component';
 import { ManageProductComponent } from './Admin/manage-product/manage-product.component';
+import { AuthComponent } from './auth/auth.component';
+import { SignInComponent } from './Auth/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DashboardComponent,
-    ManageProductComponent
+    ManageProductComponent,
+    AuthComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
