@@ -1,1 +1,64 @@
-<p>manage-product works!</p>
+
+<app-header></app-header>
+<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Manage Product</h1>
+      
+    </div>
+    <ul _ngcontent-hjw-c43="" id="myTab" role="tablist" class="nav nav-tabs">
+        <li _ngcontent-hjw-c43="" role="presentation" class="nav-item">
+            <a _ngcontent-hjw-c43="" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" class="nav-link active">Event</a>
+        </li>
+        <li _ngcontent-hjw-c43="" role="presentation" class="nav-item">
+            <a _ngcontent-hjw-c43="" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" class="nav-link">Description</a>
+        </li>
+     
+    </ul>
+    <form  class="ng-dirty ng-touched ng-valid">
+        <div class="tab-content">
+            <div class="tab-pane fade active show">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-6 p-3">
+                        <h4>Title</h4>
+                        <input type="text" class="form-control" placeholder="name">
+                    </div>
+                    <div class="col-lg-6 col-md-3 col-6 p-3">
+                        <h4 class="float-right mr-5 p-0">Blog Image</h4><br><br>
+                        <img src="assets/img/upload1.jpg" class="ml-5 img-fluid float-right">
+                    </div>
+                  
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-6 p-3"  style="margin-top: -150px;">
+                        <h4>Blog Category</h4>
+                        <div class="form-group">
+                        
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Select Category</option>
+                                
+                              <option>Music</option>
+
+                              <option>Entertaiment</option>
+                              <option>News</option>
+                              <option>Sports</option>
+                              <option>Bollywood</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="col-lg-6 col-md-3 col-6 p-3">
+                        <h4 class="float-right mr-5 p-0"><button style="background-color: blue;" class=" text-white btn">upload</button></h4><br><br>
+                    
+                    </div>
+             
+                </div>
+                <div class="row" style="margin-top: -110px;">
+                    <div class="col-lg-3 col-md-3 col-6 p-3">
+                        <h4>Blog Image</h4>
+                        <input type="file" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+   </main>
