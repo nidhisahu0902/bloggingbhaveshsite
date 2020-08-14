@@ -9,10 +9,13 @@ import { CommonService } from 'src/app/services/common.service';
   styleUrls: ['./manage-product.component.scss']
 })
 export class ManageProductComponent implements OnInit {
-
+  allPost
   constructor(public blogService:BlogService,public commoneService:CommonService) { }
 
   ngOnInit(): void {
+    this.blogService.getAllPost().subscribe(res => {
+      this.allPost=res
+    })
   }
   addPost(formData : NgForm) 
   {
@@ -20,5 +23,9 @@ export class ManageProductComponent implements OnInit {
     let data=formData.value
     this.blogService.onAddPost(data)
     formData.resetForm();
+  }
+  deletePost(postId)
+  {
+      this.blogService.onDeltePost(postId)
   }
 }
