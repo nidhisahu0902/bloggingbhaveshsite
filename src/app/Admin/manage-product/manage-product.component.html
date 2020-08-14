@@ -22,7 +22,8 @@
                     </div>
                     <div class="col-lg-6 col-md-3 col-6 p-3">
                         <h4 class="float-right mr-5 p-0">Blog Image</h4><br><br>
-                        <img src="assets/img/upload1.jpg" class="ml-5 img-fluid float-right">
+                        <img [src]="defaultImg" class="img-fluid mb-3"  (click)="fileuploader.click()">
+
                     </div>
                   
 
@@ -35,26 +36,30 @@
                             <select required class="form-control" ngModel name="blogCategory" id="exampleFormControlSelect1">
                               <option>Select Category</option>
                                 
-                              <option>Music</option>
+                              <option value="technical">Techical</option>
 
-                              <option>Entertaiment</option>
-                              <option>News</option>
-                              <option>Sports</option>
-                              <option>Bollywood</option>
+                              <option value="healthAndBeauty">Health & Beauty</option>
+                              <option value="natureAndWellness">Nature & Wellness</option>
+                              <option value="travel">Travel</option>
+                              <option value="autoMobile">AutoMobile</option>
+                              <option value="history">History</option>
+                              <option value="autoMobile">AutoMobile</option>
+                              <option value="currentAffairs">Current-Affairs</option>
+                              <option value="autoMobile">AutoMobile</option>
+                              <option value="earnMoneyOnline">Earn Money Online</option>
+                              
+
+
                             </select>
                           </div>
                     </div>
                     <div class="col-lg-6 col-md-3 col-6 p-3">
-                        <h4 class="float-right mr-5 p-0"><button style="background-color: blue;" class=" text-white btn">upload</button></h4><br><br>
+                        <p class="float-right mr-5 p-0">
+                          <input type="file" #fileuploader  (change)="processFile($event)" ngModel required name="fakrUrlForValidation" style="background-color: blue; width:95%;" class="ml-5 text-white btn form-control">
+                        </p><br><br>
                     
                     </div>
              
-                </div>
-                <div class="row" style="margin-top: -50px;">
-                    <div class="col-lg-3 col-md-3 col-6 p-3">
-                        <h4>Blog Image</h4>
-                        <input type="text" class="form-control" ngModel name="image" required >
-                    </div>
                 </div>
                
             </div>
@@ -112,9 +117,9 @@
 
                   <td>{{post.title}}</td>
                   <td>{{post.blogCategory}}</td>
-                  <td><img src="assets/img/upload.jpg" class="img-fluid" style="border-radius: 50%; height: 50px; width: 50px;"></td>
+                  <td><img src={{post.url}} class="img-fluid" style="border-radius: 50%; height: 50px; width: 50px;"></td>
 
-                  <td><a (click)="deletePost(post.id)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
+                  <td><a (click)="deletePost(post.id,post.imagePath)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
                   <!-- <td><a ><i class="fa fa-pencil-square-o text-warning" aria-hidden="true"></i></a></td> -->
                 
                 </tr>

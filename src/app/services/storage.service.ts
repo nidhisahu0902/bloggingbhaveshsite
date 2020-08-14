@@ -10,7 +10,8 @@ export class StorageService {
 
   upload(path:string,file){
     return this.storage.upload(path,file).then(res=>{
-     return this.getUrl(path).then(res=>{
+      return this.getUrl(path).then(res => {
+       console.log(res)
        return res
      })
     })
