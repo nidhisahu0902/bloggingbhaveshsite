@@ -13,10 +13,11 @@ export class AuthService {
 
   constructor(public afAuth:AngularFireAuth,public db:AngularFirestore,public router:Router,public common:CommonService) {
     this.afAuth.authState.subscribe(res=>{
+      console.log(res)
       if(res){
         localStorage.setItem("uid",res.uid)
         localStorage.setItem("email",res.email)
-        this.router.navigateByUrl("/dashboard")
+        //this.router.navigateByUrl("/dashboard")
       }
       else{
         localStorage.removeItem("uid")
@@ -46,11 +47,11 @@ export class AuthService {
      })
    }
 
-   signIn(email,password){
+   signIn(cred){
      this.common.showLoader()
-     console.log(email,password)
+     console.log(cred.mail,cred.password)
 
-     return this.afAuth.signInWithEmailAndPassword(email,password).then(res=>{
+     return this.afAuth.signInWithEmailAndPassword(cred.mail,cred.password).then(res=>{
       localStorage.setItem("uid",res.user.uid)
       localStorage.setItem("email",res.user.email)
       this.common.showToast("success","Successfull","You are LoggedIn successfully")
@@ -68,7 +69,7 @@ export class AuthService {
    resetPassword(email){
     this.common.showLoader()
     return this.afAuth.sendPasswordResetEmail(email).then(res=>{
-      this.router.navigateByUrl("/auth")
+      this.router.navigateByUrl("/")
       this.common.showToast("success","Reset link Send","Check your email for password reset link")
     }).finally(()=>{
       this.common.stopLoader()
@@ -87,9 +88,13 @@ export class AuthService {
    logOut(){
       this.common.showLoader()
       localStorage.removeItem("uid")
-      localStorage.removeItem("email")
+     localStorage.removeItem("email")
       this.afAuth.signOut()
-      window.location.reload()
+     window.location.reload()
+     this.router.navigateByUrl("/auth")
+
+     
+     
    }
 
    getUid(){

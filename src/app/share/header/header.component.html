@@ -7,7 +7,7 @@
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" (click)="logout()">Sign out</a>
+            <a class="nav-link" style="cursor: pointer;" (click)="logout()">Sign out</a>
         </li>
     </ul>
 </nav>
@@ -19,16 +19,23 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
-                            aria-current="page" routerLink="/">
+                            aria-current="page" routerLink="/dashboard">
                             <span data-feather="home"></span>
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
-                            aria-current="page" routerLink="/manageproduct">
+                            aria-current="page" routerLink="/manageProduct">
                             <span data-feather="home"></span>
                             Product
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+                            aria-current="page" routerLink="/manageVideo">
+                            <span data-feather="home"></span>
+                            Video
                         </a>
                     </li>
                 </ul>
@@ -36,4 +43,4 @@
         </nav>
     </div>
 </div>
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->

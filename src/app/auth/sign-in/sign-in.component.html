@@ -1,1 +1,17 @@
-<p>sign-in works!</p>
+<div class="container">
+    <div style="margin-top: 100px;"  class="card  shadow ml-5 mr-5 pl-3 pr-3 pt-3 pb-3 ">
+        <form #formData="ngForm" (ngSubmit)="signIn(formData)">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" name="mail" required ngModel id="exampleInputEmail1" aria-describedby="emailHelp">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" required ngModel name="password" id="exampleInputPassword1">
+            </div>
+         
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+</div>
