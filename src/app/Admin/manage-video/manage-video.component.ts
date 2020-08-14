@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
+import Swal from 'sweetalert2';
+
 import { VideoService } from 'src/app/services/video.service';
 
 @Component({
@@ -25,7 +28,26 @@ export class ManageVideoComponent implements OnInit {
   }
   deletePost(postId)
   {
-      this.videoService.deleteVideoLink(postId)
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+           this.videoService.deleteVideoLink(postId)
+          
+          Swal.fire(
+            'Deleted!',
+            'Your product has been deleted.',
+            'success'
+          )
+        }
+      })
   }
 
 
