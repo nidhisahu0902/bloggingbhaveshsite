@@ -69,12 +69,6 @@ export class ManageProductComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.blogService.onDeltePost(postId,imgPath)
-
-        Swal.fire(
-          'Deleted!',
-          'Your product has been deleted.',
-          'success'
-        )
       }
     })
   }

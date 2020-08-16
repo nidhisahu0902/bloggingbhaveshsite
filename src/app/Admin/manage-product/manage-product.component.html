@@ -7,7 +7,7 @@
     </div>
     <ul  id="myTab" role="tablist" class="nav nav-tabs">
         <li  role="presentation" class="nav-item">
-            <a  id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" class="nav-link active">Event</a>
+            <a  id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" class="nav-link active">Post</a>
         </li>
     
     </ul>
@@ -36,21 +36,14 @@
                         
                             <select required class="form-control" ngModel name="blogCategory" id="exampleFormControlSelect1">
                               <option>Select Category</option>
-                                
                               <option value="technical">Techical</option>
-
                               <option value="Health & Beauty">Health & Beauty</option>
                               <option value="Nature & Wellness">Nature & Wellness</option>
                               <option value="Travel">Travel</option>
                               <option value="AutoMobile">AutoMobile</option>
                               <option value="History">History</option>
-                              <option value="AutoMobile">AutoMobile</option>
-                              <option value="Current-Affairs">Current-Affairs</option>
-                              <option value="AutoMobile">AutoMobile</option>
+                              <option value="Current Affairs">Current Affairs</option>
                               <option value="Earn Money Online">Earn Money Online</option>
-                              
-
-
                             </select>
                           </div>
                     </div>
@@ -71,7 +64,7 @@
                 <h4>Description</h4>
                 <editor ngModel required name="description"
                   [init]="{
-                    height: 500,
+                    height: 300,
                     menubar: false,
                     plugins: [
                       'advlist autolink lists link image charmap print preview anchor',

@@ -15,17 +15,16 @@ export class BlogService {
 
   onAddPost(formData,imgPath,imageEvent)
   {
+    this.commoneService.showLoader();
     this.storageService.upload(imgPath,imageEvent).then(res => {
       let url = res
       let imagePath = imgPath
       console.log(res)
-      this.commoneService.showLoader();
       let timeStamp = new Date();
       let dataWithTimeStamp = formData
       let allData={url,imagePath,timeStamp,...dataWithTimeStamp}
       this.dataBase.collection("Post").add(allData).then(res => {
         this.commoneService.showToast("success", "successFully", "Product Added");
-        this.commoneService.stopLoader();
       }).catch(err => {
         this.commoneService.showToast("error","Error",err)
         return err;
@@ -38,7 +37,7 @@ export class BlogService {
 
   getAllPost()
   {
-    return this.dataBase.collection("Post").snapshotChanges().pipe(
+    return this.dataBase.collection("Post",ref=>ref.orderBy("timeStamp","desc")).snapshotChanges().pipe(
       map(actions => actions.map(a =>{
         const data = a.payload.doc.data() as any;
         const id = a.payload.doc.id;
@@ -47,11 +46,18 @@ export class BlogService {
       }))
     );
   }
-  onDeltePost(id,path)
+
+  async onDeltePost(id,path)
   { 
+    this.commoneService.showLoader()
     console.log(path)
-    this.storage.ref(path).delete()
-    this.dataBase.collection("Post").doc(id).delete();
-      
+    await this.storage.ref(path).delete()
+    this.dataBase.collection("Post").doc(id).delete().then(res=>{
+      this.commoneService.showToast("success","Deleted!","Post Deleted Successful!")
+    }).catch(err=>{
+      this.commoneService.showToast("error","Error!",err)
+    }).finally(()=>{
+      this.commoneService.stopLoader()
+    })
   }
 }

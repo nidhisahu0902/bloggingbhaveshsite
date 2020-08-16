@@ -1,18 +1,5 @@
 {
-  "targets": {
-    "splixcubeforbusiness": {
-      "hosting": {
-        "project-starter": [
-          "splixcubeforbusiness"
-        ]
-      }
-    },
-    "boxingclub-8c720": {
-      "hosting": {
-        "project-starter": [
-          "boxingclub-8c720"
-        ]
-      }
-    }
+  "projects": {
+    "default": "incomemantra-admin223"
   }
 }

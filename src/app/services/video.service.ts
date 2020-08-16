@@ -20,19 +20,16 @@ export class VideoService {
     this.dataBase.collection("Videos").add(Data).then(res => {
       this.commonService.showToast("success", "successFully", "Video Added")
       this.commonService.stopLoader();
-      
     }).catch(err => {
       this.commonService.showToast("error", "Error", err)
-      return err;
-      
     }).finally(() => {
       this.commonService.stopLoader();
-      
     })
   }
+
   getAllVideo()
   {
-    return this.dataBase.collection("Videos").snapshotChanges().pipe(
+    return this.dataBase.collection("Videos",ref=>ref.orderBy("timeStamp","desc")).snapshotChanges().pipe(
       map(actions => actions.map(a =>{
         const data = a.payload.doc.data() as any;
         const id = a.payload.doc.id;
@@ -41,8 +38,16 @@ export class VideoService {
       }))
     );
   }
+
   deleteVideoLink(id)
   {
-    this.dataBase.collection("Videos").doc(id).delete()
+    this.commonService.showLoader()
+    this.dataBase.collection("Videos").doc(id).delete().then(res=>{
+      this.commonService.showToast("success","Deleted!","Video Deleted Successful!")
+    }).catch(err=>{
+      this.commonService.showToast("error","Error!",err)
+    }).finally(()=>{
+      this.commonService.stopLoader()
+    })
   }
 }
