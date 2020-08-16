@@ -39,15 +39,15 @@
                                 
                               <option value="technical">Techical</option>
 
-                              <option value="healthAndBeauty">Health & Beauty</option>
-                              <option value="natureAndWellness">Nature & Wellness</option>
-                              <option value="travel">Travel</option>
-                              <option value="autoMobile">AutoMobile</option>
-                              <option value="history">History</option>
-                              <option value="autoMobile">AutoMobile</option>
-                              <option value="currentAffairs">Current-Affairs</option>
-                              <option value="autoMobile">AutoMobile</option>
-                              <option value="earnMoneyOnline">Earn Money Online</option>
+                              <option value="Health & Beauty">Health & Beauty</option>
+                              <option value="Nature & Wellness">Nature & Wellness</option>
+                              <option value="Travel">Travel</option>
+                              <option value="AutoMobile">AutoMobile</option>
+                              <option value="History">History</option>
+                              <option value="AutoMobile">AutoMobile</option>
+                              <option value="Current-Affairs">Current-Affairs</option>
+                              <option value="AutoMobile">AutoMobile</option>
+                              <option value="Earn Money Online">Earn Money Online</option>
                               
 
 
@@ -56,7 +56,8 @@
                     </div>
                     <div class="col-lg-6 col-md-3 col-6 p-3">
                         <p class="float-right mr-5 p-0">
-                          <input type="file" #fileuploader  (change)="processFile($event)" ngModel required name="fakrUrlForValidation" style="background-color: blue; width:95%;" class="ml-5 text-white btn form-control">
+                          <input type="file" #fileuploader  (change)="processFile($event)" ngModel required name="coverImage" style="display: none;" class="ml-5 text-white btn form-control">
+                          <button type="button" (click)="fileuploader.click()" class="btn btn-primary">Upload</button>
                         </p><br><br>
                     
                     </div>

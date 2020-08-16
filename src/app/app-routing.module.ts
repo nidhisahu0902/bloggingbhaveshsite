@@ -5,6 +5,8 @@ import { ManageProductComponent } from './Admin/manage-product/manage-product.co
 import { AuthComponent } from './auth/auth.component';
 import { SignInComponent } from './Auth/sign-in/sign-in.component';
 import { ManageVideoComponent } from './Admin/manage-video/manage-video.component';
+import { AdminComponent } from './admin/admin.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -13,9 +15,13 @@ const routes: Routes = [
     {path:'',component:SignInComponent}
   ]
   },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'manageProduct', component: ManageProductComponent },
-  { path: 'manageVideo',component:ManageVideoComponent}
+  {
+    path: 'admin-panel', component: AdminComponent, canActivate:[AuthGuardService], children: [
+      { path: '', component: DashboardComponent },
+      { path: 'manageProduct', component: ManageProductComponent },
+      { path: 'manageVideo',component:ManageVideoComponent}
+    
+  ]}
 ];
 
 @NgModule({

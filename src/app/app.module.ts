@@ -19,6 +19,7 @@ import { ManageProductComponent } from './Admin/manage-product/manage-product.co
 import { AuthComponent } from './auth/auth.component';
 import { SignInComponent } from './Auth/sign-in/sign-in.component';
 import { ManageVideoComponent } from './Admin/manage-video/manage-video.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ManageVideoComponent } from './Admin/manage-video/manage-video.componen
     ManageProductComponent,
     AuthComponent,
     SignInComponent,
-    ManageVideoComponent
+    ManageVideoComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

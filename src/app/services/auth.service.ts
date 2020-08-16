@@ -14,7 +14,7 @@ export class AuthService {
   constructor(public afAuth:AngularFireAuth,public db:AngularFirestore,public router:Router,public common:CommonService) {
     this.afAuth.authState.subscribe(res=>{
       console.log(res)
-      if(res){
+      if(res.uid == "fzCLRSQcJ4Z8tXC08NIqx6P0Arz1"){
         localStorage.setItem("uid",res.uid)
         localStorage.setItem("email",res.email)
         //this.router.navigateByUrl("/dashboard")
@@ -55,7 +55,7 @@ export class AuthService {
       localStorage.setItem("uid",res.user.uid)
       localStorage.setItem("email",res.user.email)
       this.common.showToast("success","Successfull","You are LoggedIn successfully")
-      this.router.navigateByUrl("/dashboard")
+      this.router.navigateByUrl("/admin-panel")
       return res.user.uid
      }).catch(err=>{
       // code to generate a notification alert of wrong credentials
@@ -77,7 +77,7 @@ export class AuthService {
    }
 
    isAuthenticated(){
-    if(localStorage.getItem("uid")){
+    if(localStorage.getItem("uid") == "fzCLRSQcJ4Z8tXC08NIqx6P0Arz1"){
       return true
     }
     else{
