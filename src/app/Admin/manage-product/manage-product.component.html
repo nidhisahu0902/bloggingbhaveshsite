@@ -5,38 +5,25 @@
       <h1 class="h2">Manage Product</h1>
       
     </div>
-    <ul  id="myTab" role="tablist" class="nav nav-tabs">
-        <li  role="presentation" class="nav-item">
-            <a  id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" class="nav-link active">Post</a>
-        </li>
-    
-    </ul>
    
     <form #formData="ngForm" (ngSubmit)="addPost(formData)" class="ng-dirty ng-touched ng-valid">
-        <div class="tab-content"  id="myTabContent" >
-            <div class="tab-pane fade active show"  id="home" role="tabpanel" aria-labelledby="home-tab">
+        
                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-6 p-3">
+                    <div class="col-lg-3 col-md-3 col-12 p-3">
                         <h4>Title</h4>
-                        <input type="text" class="form-control" name="title" placeholder="name" ngModel required>
+                        <input type="text" class="form-control" name="title" placeholder="Title" ngModel required>
                     </div>
-                    <div class="col-lg-6 col-md-3 col-6 p-3">
-                        <h4 class="float-right mr-5 p-0">Blog Image</h4><br><br>
-                        <div class="float-right mr-5 p-0">
-                          <img [src]="defaultImg" class="img-fluid mb-3" style="height:200px; width:200px;"  (click)="fileuploader.click()">
-                        </div>
+                    <div class="col-lg-6 col-md-3 col-12 p-3">
+                        <h4>Sub Title</h4>
+                        <input type="text" class="form-control" name="subTitle" placeholder="Sub Title" ngModel required>
                     </div>
-                  
-
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-6 p-3"  style="margin-top: -100px;">
+                
+                    <div class="col-lg-4 col-md-3 col-12 my-auto">
                         <h4>Blog Category</h4>
                         <div class="form-group">
-                        
                             <select required class="form-control" ngModel name="blogCategory" id="exampleFormControlSelect1">
                               <option>Select Category</option>
-                              <option value="Technical">Techical</option>
+                              <option value="Technology">Technology</option>
                               <option value="Health & Beauty">Health & Beauty</option>
                               <option value="Nature & Wellness">Nature & Wellness</option>
                               <option value="Travel">Travel</option>
@@ -47,19 +34,17 @@
                             </select>
                           </div>
                     </div>
-                    <div class="col-lg-6 col-md-3 col-6 p-3">
-                        <p class="float-right mr-5 p-0">
-                          <input type="file" #fileuploader  (change)="processFile($event)" ngModel required name="coverImage" style="display: none;" class="ml-5 text-white btn form-control">
+                    <div class="col-lg-2 col-md-2"></div>
+                    <div class="col-lg-6 col-md-6 col-12 p-3">
+                        <h4 class="text-center">Blog Image</h4>
+                        <div class="text-center">
+                          <img [src]="defaultImg" class="img-fluid" style="height:200px; width:200px;"  (click)="fileuploader.click()">
+                          <input type="file" #fileuploader  (change)="processFile($event)" ngModel required name="coverImage" style="display: none;" class="ml-5 text-white btn form-control"><br><br>
                           <button type="button" (click)="fileuploader.click()" class="btn btn-primary">Upload</button>
-                        </p><br><br>
-                    
+                        </div>
                     </div>
+                  </div>
              
-                </div>
-               
-            </div>
-        </div>
-       
             <div class="container">
                 <h4>Description</h4>
                 <editor ngModel required name="description"
