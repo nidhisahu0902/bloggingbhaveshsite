@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { BlogService } from 'src/app/services/blog.service';
 import { CommonService } from 'src/app/services/common.service';
 import Swal from 'sweetalert2';
+import { SlugPipe } from 'src/app/pipes/slug.pipe';
 
 
 @Component({
@@ -16,13 +17,17 @@ export class ManageProductComponent implements OnInit {
   selectedImage: any = null;
   imagePath
   imageEvent
-  constructor(public blogService:BlogService,public commoneService:CommonService) { }
+  
+  constructor(public blogService:BlogService,public commoneService:CommonService,private slugPipe:SlugPipe) { }
 
   ngOnInit(): void {
     this.blogService.getAllPost().subscribe(res => {
       this.allPost=res
     })
   }
+
+  
+
   processFile(event)
   {
     console.log(event)
@@ -32,8 +37,6 @@ export class ManageProductComponent implements OnInit {
       reader.onload=(e:any) => this.defaultImg= e.target.result;
       reader.readAsDataURL(event.target.files[0]);
       this.defaultImg=event.target.files[0];
-      
-
     }
     else{
       this.defaultImg="assets/img/upload1.jpg";
@@ -43,19 +46,22 @@ export class ManageProductComponent implements OnInit {
     let rand= now.toString()
     let path = "postImages/1"+rand
     this.imagePath = path
-  
     this.imageEvent = event.target.files[0];
   }
+
   addPost(formData : NgForm) 
   {
     console.log(formData.value)
+    let slugData = this.slugPipe.transform(formData.value.blogCategory)
+    console.log(slugData)
     let data=formData.value
-    this.blogService.onAddPost(data, this.imagePath, this.imageEvent)
+    this.blogService.onAddPost(data, this.imagePath, this.imageEvent,slugData)
     this.defaultImg="assets/img/upload1.jpg"
 
     this.selectedImage = null;
     formData.resetForm();
   }
+
   deletePost(postId,imgPath)
   {
     Swal.fire({

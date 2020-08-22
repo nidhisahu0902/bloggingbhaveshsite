@@ -13,7 +13,7 @@ export class BlogService {
 
   constructor(public dataBase:AngularFirestore,public commoneService:CommonService,public storageService:StorageService,public storage:AngularFireStorage) { }
 
-  onAddPost(formData,imgPath,imageEvent)
+  onAddPost(formData,imgPath,imageEvent,slug)
   {
     this.commoneService.showLoader();
     this.storageService.upload(imgPath,imageEvent).then(res => {
@@ -22,7 +22,8 @@ export class BlogService {
       console.log(res)
       let timeStamp = new Date();
       let dataWithTimeStamp = formData
-      let allData={url,imagePath,timeStamp,...dataWithTimeStamp}
+      let categorySlug = slug
+      let allData={categorySlug,url,imagePath,timeStamp,...dataWithTimeStamp}
       this.dataBase.collection("Post").add(allData).then(res => {
         this.commoneService.showToast("success", "successFully", "Product Added");
       }).catch(err => {

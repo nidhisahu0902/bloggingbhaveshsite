@@ -20,6 +20,7 @@ import { AuthComponent } from './auth/auth.component';
 import { SignInComponent } from './Auth/sign-in/sign-in.component';
 import { ManageVideoComponent } from './Admin/manage-video/manage-video.component';
 import { AdminComponent } from './admin/admin.component';
+import { SlugPipe } from './pipes/slug.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AdminComponent } from './admin/admin.component';
     AuthComponent,
     SignInComponent,
     ManageVideoComponent,
-    AdminComponent
+    AdminComponent,
+    SlugPipe
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { AdminComponent } from './admin/admin.component';
     EditorModule,
     ToastrModule.forRoot() // ToastrModule added
   ],
-  providers: [],
+  providers: [SlugPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,8 +22,7 @@ export class ManageVideoComponent implements OnInit {
   saveVideo(formData : NgForm)
   {
     console.log(formData.value)
-    let videoUrl = formData.value
-    this.videoService.onAddVideo(videoUrl)
+    this.videoService.onAddVideo(formData.value)
     formData.resetForm();
   }
   deletePost(postId)

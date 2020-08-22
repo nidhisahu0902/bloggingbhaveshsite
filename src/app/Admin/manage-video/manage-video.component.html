@@ -10,6 +10,10 @@
                 <h4>Import Video Link</h4>
                 <input type="text" class="form-control" name="videoLink" placeholder="Video Link" ngModel required>
             </div>
+            <div class="col-lg-3 col-md-3 col-6 p-3">
+                <h4>Title</h4>
+                <input type="text" class="form-control" name="title" placeholder="Video Link" ngModel required>
+            </div>
         </div>
         <div class="container mt-2">
             <button type="submit" class="btn btn-info" [disabled]="!formData.valid">Save Link</button>
@@ -25,6 +29,7 @@
               <thead>
                 <tr>
                   <th>Sr. No.</th>
+                  <th>Video Title</th>
                   <th>Video Link</th>
                   <th>Delete</th>
                   
@@ -34,7 +39,7 @@
               <tbody>
                 <tr  *ngFor="let post of allVideo; let i = index">
                   <td>{{i+1}}</td>
-
+                  <td>{{post.title}}</td>
                   <td>{{post.videoLink}}</td>
 
                   <td><a (click)="deletePost(post.id)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
