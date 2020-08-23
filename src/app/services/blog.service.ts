@@ -15,17 +15,18 @@ export class BlogService {
 
   onAddPost(formData,imgPath,imageEvent,slug)
   {
-    this.commoneService.showLoader();
     this.storageService.upload(imgPath,imageEvent).then(res => {
       let url = res
       let imagePath = imgPath
       console.log(res)
+      this.commoneService.showLoader();
       let timeStamp = new Date();
       let dataWithTimeStamp = formData
       let categorySlug = slug
       let allData={categorySlug,url,imagePath,timeStamp,...dataWithTimeStamp}
       this.dataBase.collection("Post").add(allData).then(res => {
         this.commoneService.showToast("success", "successFully", "Product Added");
+        this.commoneService.stopLoader();
       }).catch(err => {
         this.commoneService.showToast("error","Error",err)
         return err;
@@ -47,18 +48,11 @@ export class BlogService {
       }))
     );
   }
-
-  async onDeltePost(id,path)
+  onDeltePost(id,path)
   { 
-    this.commoneService.showLoader()
     console.log(path)
-    await this.storage.ref(path).delete()
-    this.dataBase.collection("Post").doc(id).delete().then(res=>{
-      this.commoneService.showToast("success","Deleted!","Post Deleted Successful!")
-    }).catch(err=>{
-      this.commoneService.showToast("error","Error!",err)
-    }).finally(()=>{
-      this.commoneService.stopLoader()
-    })
+    this.storage.ref(path).delete()
+    this.dataBase.collection("Post").doc(id).delete();
+      
   }
 }

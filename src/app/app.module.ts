@@ -21,6 +21,7 @@ import { SignInComponent } from './Auth/sign-in/sign-in.component';
 import { ManageVideoComponent } from './Admin/manage-video/manage-video.component';
 import { AdminComponent } from './admin/admin.component';
 import { SlugPipe } from './pipes/slug.pipe';
+import { ManageContactComponent } from './Admin/manage-contact/manage-contact.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SlugPipe } from './pipes/slug.pipe';
     SignInComponent,
     ManageVideoComponent,
     AdminComponent,
-    SlugPipe
+    SlugPipe,
+    ManageContactComponent
   ],
   imports: [
     BrowserModule,

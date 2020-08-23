@@ -7,6 +7,7 @@ import { SignInComponent } from './Auth/sign-in/sign-in.component';
 import { ManageVideoComponent } from './Admin/manage-video/manage-video.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { ManageContactComponent } from './Admin/manage-contact/manage-contact.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
     path: 'admin-panel', component: AdminComponent, canActivate:[AuthGuardService], children: [
       { path: '', component: DashboardComponent },
       { path: 'manageProduct', component: ManageProductComponent },
-      { path: 'manageVideo',component:ManageVideoComponent}
+      { path: 'manageVideo',component:ManageVideoComponent},
+      { path: 'manageInfo',component:ManageContactComponent}
     
   ]}
 ];
